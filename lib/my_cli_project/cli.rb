@@ -1,5 +1,3 @@
-#Main CLI controller
-
 class MyCliProject::CLI
 
     def call
@@ -10,7 +8,8 @@ class MyCliProject::CLI
 
     def show_deals
         puts "Limited Deals:"
-        @deals = MyCliProject::Deal.now
+    
+        @limited_deals = MyCliProject::Deal.now
     end
 
     def menu
@@ -22,12 +21,18 @@ class MyCliProject::CLI
             input = gets.strip.downcase
             case input
             when "1"
-                puts "dfsfgs"
+                puts "LIMITED EDITION WOODEN CASES"
             when "2"
-                puts "jdgjsfld"
+                puts "ANCHOR LIMITED EDITION WOODEN CASE"
+            when "3"
+                puts "LIMITED EDITION AMERICAN FLAG"
+            when "4"
+                puts "WOODEN ALARM CLOCK + WIRELESS CHARGER"
+            when "5"
+                puts "BAMBOO WOOD CHARGER STAND FOR APPLE WATCH & IPHONES"
             when "list"
                 show_deals
-            else
+            when !"exit" && !"list" 
                 puts "Choose one of the deals or type exit"
             end
         end
