@@ -9,7 +9,7 @@ class MyCliProject::CLI
     def show_deals
         puts "Limited Deals:"
     
-        @limited_deals = MyCliProject::Deal.now
+        @limited_deals = MyCliProject::Products.now
         @limited_deals.each.with_index(1) do |deal, i|
             puts "#{i}. #{deal.name} - #{deal.price} - #{deal.url}"
         end   
@@ -24,29 +24,13 @@ class MyCliProject::CLI
             input = gets.strip.downcase
 
             if input.to_i > 0
-                puts @limited_deals[input.to_i-1]
+                my_deal = @limited_deals[input.to_i-1]
+                puts "#{my_deal.name} - #{my_deal.price} - #{my_deal.url}"
             elsif "list"
                 show_deals
             elsif !"exit" && !"list" 
                 puts "Choose one of the deals or type exit"
             end
-
-            # case input
-            # when "1"
-            #     puts "LIMITED EDITION WOODEN CASES"
-            # when "2"
-            #     puts "ANCHOR LIMITED EDITION WOODEN CASE"
-            # when "3"
-            #     puts "LIMITED EDITION AMERICAN FLAG"
-            # when "4"
-            #     puts "WOODEN ALARM CLOCK + WIRELESS CHARGER"
-            # when "5"
-            #     puts "BAMBOO WOOD CHARGER STAND FOR APPLE WATCH & IPHONES"
-            # when "list"
-            #     show_deals
-            # when !"exit" && !"list" 
-            #     puts "Choose one of the deals or type exit"
-            # end
         end
     end
 
