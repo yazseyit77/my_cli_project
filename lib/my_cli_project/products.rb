@@ -2,7 +2,7 @@ require 'pry'
 
 class MyCliProject::Products
 
-    attr_accessor :name, :price, :url, :photo
+    attr_accessor :name, :price, :url, :available
 
     def self.now
 
@@ -15,7 +15,13 @@ class MyCliProject::Products
          
         products << self.scrape_first
         products << self.scrape_second
-       
+        products << self.scrape_third
+        products << self.scrape_fourth
+        products << self.scrape_fifth
+        products << self.scrape_sixth
+        products << self.scrape_seventh
+        products << self.scrape_eighth
+              
 
         products
     end
@@ -38,8 +44,78 @@ class MyCliProject::Products
         product.name = doc.css("h1.product-single__title").text
         product.price = doc.css("span#ProductPrice-custom-product-template").text.strip
         product.url = doc.css("div.product-single__photo a").attr("href").value
+
+        product
+   end
+
+   def self.scrape_third
+        doc = Nokogiri::HTML(open("https://www.limited77.com/products/snapback-hat"))
+            
+        product = self.new
+        product.name = doc.css("h1.product-single__title").text
+        product.price = doc.css("span#ProductPrice-custom-product-template").text.strip
+        product.url = doc.css("div.product-single__photo a").attr("href").value
+
+        product
+   end
+
+   def self.scrape_fourth
+        doc = Nokogiri::HTML(open("https://www.limited77.com/products/baseball-dad-mens-navy-round-neck-t-shirt-funny"))
+            
+        product = self.new
+        product.name = doc.css("h1.product-single__title").text
+        product.price = doc.css("span#ProductPrice-custom-product-template").text.strip
+        product.url = doc.css("div.product-single__photo a").attr("href").value
+
+        product
+   end
+
+   def self.scrape_fifth
+        doc = Nokogiri::HTML(open("https://www.limited77.com/products/worlds-okayest-dad-funny-design-gift-mug-funny"))
+            
+        product = self.new
+        product.name = doc.css("h1.product-single__title").text
+        product.price = doc.css("span#ProductPrice-custom-product-template").text.strip
+        product.url = doc.css("div.product-single__photo a").attr("href").value
+
+        product
+   end
+
+   def self.scrape_sixth
+        doc = Nokogiri::HTML(open("https://www.limited77.com/products/jack-for-airpods"))
+            
+        product = self.new
+        product.name = doc.css("h1.product-single__title").text
+        product.price = doc.css("span#ProductPrice-custom-product-template").text.strip
+        product.url = doc.css("div.product-single__photo a").attr("href").value
+
+        product
+   end
+
+   def self.scrape_seventh
+        doc = Nokogiri::HTML(open("https://www.limited77.com/products/limited-edition-american-flag?_pos=1&_sid=5c3b84fd2&_ss=r"))
+            
+        product = self.new
+        product.name = doc.css("h1.product-single__title").text
+        product.price = doc.css("span#ProductPrice-custom-product-template").text.strip
+        product.url = doc.css("div.product-single__photo a").attr("href").value
+
+        product
+   end
+
+   def self.scrape_eighth
+        doc = Nokogiri::HTML(open("https://www.limited77.com/products/womens-sheer-kimono-cardigan"))
+            
+        product = self.new
+        product.name = doc.css("h1.product-single__title").text
+        product.price = doc.css("span#ProductPrice-custom-product-template").text.strip
+        product.available = doc.css("div.product-form__item span#AddToCartText-custom-product-template").text.strip
+        product.url = doc.css("div.product-single__photo a").attr("href").value
         #binding.pry
 
         product
    end
+
+
+
 end

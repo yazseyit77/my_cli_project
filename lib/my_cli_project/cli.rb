@@ -3,15 +3,15 @@ class MyCliProject::CLI
     def call
         show_deals
         menu
-        goodbye
+        #goodbye
     end
 
     def show_deals
-        puts "Limited Deals:"
+        puts "Limited Products:"
     
         @limited_deals = MyCliProject::Products.now
         @limited_deals.each.with_index(1) do |deal, i|
-            puts "#{i}. #{deal.name} - #{deal.price} - #{deal.url}"
+            puts "   #{i}. #{deal.name}"
         end   
     end
 
@@ -23,12 +23,15 @@ class MyCliProject::CLI
 
             input = gets.strip.downcase
 
-            if input.to_i > 0
+            if input.to_i > 0 && input.to_i < 9
                 my_deal = @limited_deals[input.to_i-1]
-                puts "#{my_deal.name} - #{my_deal.price} - #{my_deal.url}"
-            elsif "list"
+                puts "#{my_deal.name} - #{my_deal.price} #{my_deal.available} - #{my_deal.url}"
+            elsif input == "list"
                 show_deals
-            elsif !"exit" && !"list" 
+            elsif input == "exit"
+                goodbye
+            #elsif !"exit" || !"list" 
+            else
                 puts "Choose one of the deals or type exit"
             end
         end
