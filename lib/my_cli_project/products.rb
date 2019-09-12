@@ -1,7 +1,5 @@
-require 'pry'
 
 class MyCliProject::Products
-
     attr_accessor :name, :price, :url, :available
 
     def self.now
@@ -22,7 +20,6 @@ class MyCliProject::Products
         products << self.scrape_seventh
         products << self.scrape_eighth
               
-
         products
     end
 
@@ -111,11 +108,8 @@ class MyCliProject::Products
         product.price = doc.css("span#ProductPrice-custom-product-template").text.strip
         product.available = doc.css("div.product-form__item span#AddToCartText-custom-product-template").text.strip
         product.url = doc.css("div.product-single__photo a").attr("href").value
-        #binding.pry
 
         product
    end
-
-
 
 end
