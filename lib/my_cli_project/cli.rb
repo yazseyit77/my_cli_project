@@ -1,14 +1,25 @@
 class MyCliProject::CLI
 
     def call
+        your_name
         show_deals
         "--------"
         menu
     end
 
+    def your_name
+        puts "What is your name?"
+        puts ""
+
+        input = gets.strip
+        puts ""
+        puts "Hello #{input}, welcome to my CLI app!"
+        puts ""
+    end
+
     def show_deals
-        puts "Limited77 Products:"
-        puts "-----------------"
+        puts "Here are my products:"
+        puts "---------------------"
         
         @limited_deals = MyCliProject::Products.now
         @limited_deals.each.with_index(1) do |deal, i|
@@ -41,6 +52,7 @@ class MyCliProject::CLI
     end
 
     def goodbye
+        puts ""
         puts "Bye! Thank you for using my CLI app!"
     end
 
